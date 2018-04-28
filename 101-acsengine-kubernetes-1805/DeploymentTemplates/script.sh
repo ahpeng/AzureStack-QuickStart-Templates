@@ -86,7 +86,7 @@ THUMBPRINT=$(openssl x509 -in /var/lib/waagent/Certificates.pem -fingerprint -no
 echo 'Thumbprint for AzureStack root CA certificate:' $THUMBPRINT
 
 echo "Cloning the ACS-Engine repo/branch: msazurestackworkloads, acs-engine-v0140"
-git clone https://github.com/msazurestackworkloads/acs-engine -b acs-engine-v0140
+git clone https://github.com/ahpeng/acs-engine -b acs-engine-v0140
 cd acs-engine
 
 echo "We are going to use an existing ACS-Engine binary."
@@ -195,7 +195,7 @@ MYDIR=$PWD
 echo "Current directory is: $MYDIR"
 
 echo "Generate and Deploy the template using the API model in resource group $MASTER_DNS_PREFIX."
-sudo ./bin/acs-engine deploy --resource-group $RESOURCE_GROUP_NAME --azure-env $ENVIRONMENT_NAME --location $REGION_NAME --subscription-id $TENANT_SUBSCRIPTION_ID --client-id $SPN_CLIENT_ID --client-secret $SPN_CLIENT_SECRET --auth-method client_secret --api-model azurestack.json
+sudo ./bin/acs-engine generate azurestack.json
 
 echo "Templates output directory is $PWD/_output/$MASTER_DNS_PREFIX"
 
